@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require('cors')
-const PORT = process.env.PORT || "5555";
+const PORT = process.env.PORT || "5556";
 const app = express();
 const logger  = require('./logger')
 
@@ -8,13 +8,13 @@ app.use(cors());
 app.use(express.json())
 
 app.all("/", (req, res) => {
-    
+   
     res.json({ method: req.method, message: "Hello World", ...req.body });
 });
 
 app.get('/404', (req, res) => {
     res.sendStatus(404);
-    logger.customerLogger.log('error', 'Erro a entrar na pagina');
+    logger.customerLogger.log('error', 'APP2 VM');
 })
 
 
@@ -24,11 +24,11 @@ app.post('/submit', (req, res) => {
   
   if (trimmedValue === '' || trimmedValue.length < 3){
     // Exibir uma mensagem de erro para o usuário
-    logger.customerLogger.log('error', 'APLICACAO2 -Erro');
+    logger.customerLogger.log('error', 'APLICACAO1');
     res.status(400).json({ message: 'O valor do input deve ter pelo menos 3 caracteres!' });
   } else {
     // Log a mensagem de sucesso
-    logger.customerLogger.log('info', 'APLICACAO2');
+    logger.customerLogger.log('info', 'APLICACAO1');
     res.status(200).json({ message: 'Colocado com sucesso!' });
   }
 });
